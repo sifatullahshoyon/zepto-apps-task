@@ -259,10 +259,35 @@ nav li:first-child{
   
 /* Search Field End */
 
+/* Start Dropdown */
+
+.dropdown{
+    display: flex;
+    justify-content: end;
+}
+
+#genre-dropdown {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    width: 100%; /* Full-width on smaller screens */
+    max-width: 300px; /* Set max width for larger screens */
+    margin: 10px 5; /* Some margin for spacing */
+  }
+  
+/* End Dropdown */
+
+.spinner{
+    margin-bottom: 20px;
+}
+
 /* Start Books Cart */
 
 .books-container{
-  margin: 20px auto;
+  margin: 50px auto;
+  padding-top: 20px;
   display: grid;
   grid-template-columns: repeat(3 , 1fr);
   gap: 20px;
@@ -391,6 +416,16 @@ nav li:first-child{
       .remove-btn {
         padding: 8px 12px;
       }
+
+      /* Start Drop Down */
+
+      #genre-dropdown {
+        width: 350px; /* Slightly wider on large screens */
+        font-size: 18px;
+      }
+
+    /* End Drop Down */
+
     /* End Book Cart */
   }
 
@@ -462,6 +497,15 @@ nav li:first-child{
 
     /* End Book Cart */
 
+    /* Start Drop Down */
+
+    #genre-dropdown {
+        width: 300px; 
+        font-size: 18px;
+      }
+
+    /* End Drop Down */
+
     /* End Book List */
 
 
@@ -490,6 +534,15 @@ nav li:first-child{
     .books-container{
         grid-template-columns: repeat(1 , 1fr); 
       }
+
+       /* Start Drop Down */
+
+    #genre-dropdown {
+        width: 250px; 
+        font-size: 16px;
+      }
+
+    /* End Drop Down */
 
     /* End Books */
 
