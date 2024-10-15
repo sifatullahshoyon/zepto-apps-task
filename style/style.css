@@ -264,7 +264,7 @@ nav li:first-child{
 .books-container{
   margin: 20px auto;
   display: grid;
-  grid-template-columns: repeat(4 , 1fr);
+  grid-template-columns: repeat(3 , 1fr);
   gap: 20px;
   padding: 0 10px;
 }
@@ -272,18 +272,24 @@ nav li:first-child{
 .cart-item {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 15px;
     border: 1px solid #ddd;
     border-radius: 10px;
     margin-bottom: 20px;
     background-color: #f9f9f9;
+    position: relative;
   }
+
+  .cart-item:hover img {
+    transform: scale(1.1);
+}
   
   .cart-item img {
     max-width: 150px;
     border-radius: 10px;
+    transition: transform 0.3s 
   }
   
   .cart-details {
@@ -302,10 +308,15 @@ nav li:first-child{
     font-size: 14px;
     color: #666;
   }
+
+  .cart-details p span{
+    color: var(--secondary-color);
+    font-weight: bold;
+  }
   
   .cart-footer {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-top: 10px;
   }
@@ -318,6 +329,8 @@ nav li:first-child{
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    position: absolute;
+    bottom: 10px;
   }
   
 
