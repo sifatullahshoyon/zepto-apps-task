@@ -5,12 +5,122 @@
 }
 
 :root{
-
+    --primary-color: #00C1BA;
 }
 
 body {
     font-family: "Poppins", sans-serif;
     font-weight: 500;
     font-style: normal;
+    min-height: 100vh;
 }
 
+.container{
+    max-width: 1024px;
+    margin: auto;
+}
+
+
+/* Start Navbar */
+
+nav{
+    background-color: var(--primary-color);
+}
+
+nav ul{
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+nav li{
+    height: 50px;
+}
+
+nav a{
+    height: 100%;
+    padding: 0 30px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: white
+}
+
+nav a:hover{
+    background-color: #a5fcf954;
+    color: black;
+}
+
+nav li:first-child{
+    margin: auto;
+    width: 100%;
+}
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    z-index: 999;
+    background-color: gray;
+    backdrop-filter: blur(10px);
+    box-shadow: -10 0 10px rgba(0,0,0,0.1);
+    display: none;
+    /* display: flex; */
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.sidebar li{
+    width: 100%;
+}
+
+.sidebar a{
+    width: 100%;
+}
+
+.menu-btn{
+    display: none;
+}
+
+/* End Navbar */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Responsive Style */
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+    .hideOnMobile{
+        display: none;
+    }
+
+    .menu-btn{
+        display: block;
+    }
+}
