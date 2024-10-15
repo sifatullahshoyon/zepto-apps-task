@@ -90,6 +90,114 @@ nav li:first-child{
 /* End Navbar */
 
 
+/* Start Banner */
+
+.banner{
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.637) 0%, rgba(0, 0, 0, 0.808) 100%) , url('/assets/images/header.jpg');
+}
+
+.banner-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.banner-text h1{
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 48px;
+    margin-bottom: 20px;
+    text-wrap: balance;
+}
+
+.banner-text h1 span{
+    color: var(--primary-color);
+}
+
+.banner-text p{
+    color: #ffffff;
+    font-size: 14px;
+    letter-spacing: 0.025em;
+    line-height: 2;
+    margin-bottom: 30px;
+    text-wrap: balance;
+    padding: 0 5px;
+}
+
+.banner-btn-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.shop-now {
+    align-items: center;
+    background-color: var(--primary-color);
+    border: 0;
+    border-radius: 100px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 20px;
+    max-width: 480px;
+    min-height: 40px;
+    min-width: 0px;
+    overflow: hidden;
+    padding: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    touch-action: manipulation;
+    transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    margin-right: 20px;
+  }
+
+  .learn-more {
+    align-items: center;
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    border-radius: 100px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 20px;
+    max-width: 480px;
+    min-height: 40px;
+    min-width: 0px;
+    overflow: hidden;
+    padding: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    touch-action: manipulation;
+    transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+  }
+
+/* End Banner */
+
+
 
 
 
@@ -116,6 +224,7 @@ nav li:first-child{
 
 /* Mobile Styles */
 @media screen and (max-width: 768px) {
+    /* Navbar Start */
     .hideOnMobile{
         display: none;
     }
@@ -123,4 +232,15 @@ nav li:first-child{
     .menu-btn{
         display: block;
     }
+    /* Navbar End */
+
+    /* Banner Start */
+    .banner-text h1{
+        font-size: 30px;
+    }
+
+    .banner-text p{
+        font-size: 12px;
+    }
+    /* Banner End */
 }
