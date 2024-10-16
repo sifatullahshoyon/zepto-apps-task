@@ -71,7 +71,7 @@ function displayProducts(products) {
         <h4>Title: ${product?.title ? product?.title.slice(0, 50) : "Data Not Found"}...</h4>
         <p><span>Authors Name:</span> ${product?.authors[0]?.name ? product?.authors[0]?.name.slice(0, 50) : "Data Not Found"}....</p>
         <div class="cart-footer">
-          <button class="details-btn">View Details</button>
+          <button class="details-btn" onclick="viewDetails(${product.id})">View Details</button>
         </div>
       </div>
     `;
@@ -132,6 +132,13 @@ document.getElementById('genre-dropdown').addEventListener('change', (event) => 
 fetchProductData();
 
 
-  
+// Function to redirect to book details page  by using id
+function viewDetails(bookId) {
+  console.log(bookId);
+  // Redirect to the details page with the book ID in the URL
+  window.location.href = `book-details.html?id=${bookId}`;
+}
 
 //////////////////////////////////////////// End Books code //////////////////////////////////////////
+
+

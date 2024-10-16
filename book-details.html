@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Font Family CDN Link Goes Here -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- External Css File Link Goes Here -->
+     <link rel="stylesheet" href="/style/style.css">
+    <title>Books</title>
+    <style>
+        .book-details-container{
+            min-height: 100vh;
+            margin: 0 10px;
+        }
+
+        .book-details-heading{
+            text-align: center;
+            margin: 20px;
+        }
+
+        .cart-item p{
+            margin: 10px 0;
+        }
+
+        .cart-item ul li{
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Start Header Section -->
+     <header>
+        <nav>
+            <div class="container">
+                <!-- Mobile Devise -->
+                <ul class="sidebar">
+                    <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Books</a></li>
+                    <li><a href="#">Wishlist</a></li>
+                </ul>
+                <!-- Desktop Devise -->
+                <ul>
+                    <li><a href="#">BookStore</a></li>
+                    <li class="hideOnMobile"><a href="index.html">Home</a></li>
+                    <li class="hideOnMobile"><a href="#">Books</a></li>
+                    <li class="hideOnMobile"><a href="#">Wishlist</a></li>
+                    <li class="menu-btn" onclick="showSidebar()" ><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- End Nav Bar -->
+     </header>
+    <!-- End Header Section -->
+
+    <!-- Start Main Section -->
+     <main>
+        <!-- Start Book Details Section -->
+         <section>
+            <div class="container">
+                <div class="book-details-container">
+                    <h1 class="book-details-heading">Book Details</h1>
+                    <!-- Loading Spinner ‍Start -->
+                    <div class="spinner" id="spinner">Loading..........</div>
+                    <!-- Loading Spinner ‍End -->
+                    <div id="book-details"></div>
+                </div>
+            </div>
+         </section>
+        <!-- End Book Details Section -->
+     </main>
+    <!-- End Main Section -->
+
+    <!-- Start Footer Section -->
+     <footer>
+        <p>&copy; 2024 Book App. All Rights Reserved.</p>
+     </footer>
+    <!-- End Footer Section -->
+
+
+    <!-- The Start Script File is Here -->
+    <script src="/script/index.js"></script>
+    <script src="/script/book-details.js"></script>
+    <!-- The End Script File is Here -->
+</body>
+</html>

@@ -358,6 +358,34 @@ nav li:first-child{
     position: absolute;
     bottom: 10px;
   }
+
+/* Start Pagination  */
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pagination-btn {
+    margin: 5px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .pagination-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .pagination-btn.active {
+    background-color: #0056b3;
+    font-weight: bold;
+  }
+
+/* End Pagination  */
   
 
 /* End Books Cart */
