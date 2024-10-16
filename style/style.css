@@ -264,6 +264,7 @@ nav li:first-child{
 .dropdown{
     display: flex;
     justify-content: end;
+    margin-right: 5px;
 }
 
 #genre-dropdown {

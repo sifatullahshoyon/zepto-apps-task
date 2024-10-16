@@ -27,21 +27,19 @@ async function fetchProductData() {
     return;
   }
 
-  // If no cached data, show the spinner and fetch from API
+  // Show the spinner and fetch data from API
   spinner.style.display = 'block';
 
-
   try {
-    const response = await fetch('https://gutendex.com/books/'); 
+    const response = await fetch('https://gutendex.com/books/');
     const data = await response.json();
-    console.log(data.results)
+    // console.log(data.results);
 
     // Save the data in the cache variable
     cachedData = data.results;
 
     // Hide the spinner and display the books container once data is loaded
     spinner.style.display = 'none';
-    
 
     displayProducts(cachedData); // Pass data to function that dynamically creates books
   } catch (error) {
@@ -54,12 +52,12 @@ async function fetchProductData() {
 function displayProducts(products) {
   const booksContainer = document.getElementById('books-container');
 
-  // Clear existing content (optional)
+  // Clear existing content
   booksContainer.innerHTML = '';
 
   // Use map() to create a dynamic structure for each book
   products?.map(product => {
-    console.log(product)
+    // console.log(product);
     // Product Img:
     const imageUrl = product?.formats['image/jpeg'];
     // Create dynamic HTML for each book
@@ -83,8 +81,57 @@ function displayProducts(products) {
   });
 }
 
+// Function to filter books by title in real-time based on search input
+function filterBooksByTitle(searchValue) {
+  const filteredBooks = cachedData?.filter(book =>
+    book.title.toLowerCase().includes(searchValue.toLowerCase())
+  );
+
+  // Display "Sorry, this book is not available" message if no books match
+  if (filteredBooks.length === 0) {
+    document.getElementById('books-container').innerHTML = "<p style='color: red'>Sorry, this book is not available.</p>";
+  } else {
+    displayProducts(filteredBooks);
+  }
+}
+
+// Function to filter books by genre
+async function filterBooksByGenre(genre) {
+    if (genre === 'all') {
+      displayProducts(cachedData); // Show all books if "All Genres" is selected
+    } else {
+      // Filter books by genre
+      const filteredBooks = await cachedData?.filter(book =>
+        book.subjects && book.subjects.some(subject => subject.toLowerCase().includes(genre.toLowerCase()))
+      );
+  
+      // Display a message if no books are found for the selected genre
+      if (filteredBooks.length === 0) {
+        document.getElementById('books-container').innerHTML = '<p>Sorry, no books found in this genre.</p>';
+      } else {
+        displayProducts(filteredBooks); // Show the filtered books
+      }
+    }
+  }
+
+// Add event listeners for search input and genre dropdown
+document.getElementById('search-btn').addEventListener('click', () => {
+  let searchValue = document.getElementById('search-input').value;
+  filterBooksByTitle(searchValue);
+   // After search, clear the search input field
+   document.getElementById('search-input').value = '';
+
+});
+
+document.getElementById('genre-dropdown').addEventListener('change', (event) => {
+  const selectedGenre = event.target.value;
+  filterBooksByGenre(selectedGenre);
+});
+
 // Call the function to fetch or display cached data on page load
 fetchProductData();
+
+
   
 
 //////////////////////////////////////////// End Books code //////////////////////////////////////////
