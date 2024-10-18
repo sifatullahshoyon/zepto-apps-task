@@ -51,6 +51,7 @@ async function fetchProductData() {
 // Function to dynamically create product (book) elements and insert them into the DOM
 function displayProducts(products) {
   const booksContainer = document.getElementById('books-container');
+  const wishlist = getWishlistFromLocalStorage();
 
   // Clear existing content
   booksContainer.innerHTML = '';
@@ -64,9 +65,18 @@ function displayProducts(products) {
     const bookItem = document.createElement('div');
     bookItem.classList.add('cart-item'); // Style class for book items
 
+     // Check if the book is in the wishlist
+     const isWishlisted = wishlist.includes(product.id);
+
     // Populate book item with product details using template literals
     bookItem.innerHTML = `
+      <div style="position : relative">
       <img src="${imageUrl ? imageUrl : "Img Not Found"}" alt="${product?.title}">
+      <!-- Add Wishlist Icon -->
+          <span class="wishlist-icon" data-id="${product.id}" style="cursor: pointer; color: ${isWishlisted ? 'red' : 'gray'}; position: absolute; left: 10px">
+            &#x2764; <!-- Heart Icon -->
+          </span>
+      </div>
       <div class="cart-details">
         <h4>Title: ${product?.title ? product?.title.slice(0, 50) : "Data Not Found"}...</h4>
         <p><span>Authors Name:</span> ${product?.authors[0]?.name ? product?.authors[0]?.name.slice(0, 50) : "Data Not Found"}....</p>
@@ -78,6 +88,55 @@ function displayProducts(products) {
 
     // Append the dynamically created book item to the books container
     booksContainer.appendChild(bookItem);
+
+    // Add click event listeners to the wishlist icons
+  //  addWishlistEventListeners(product);
+  });
+
+  //  // Add click event listeners to the wishlist icons
+   addWishlistEventListeners();
+
+}
+
+// Function to get wishlist from localStorage
+function getWishlistFromLocalStorage() {
+  const wishlist = localStorage.getItem('wishlist');
+  return wishlist ? JSON.parse(wishlist) : [];
+}
+
+// Function to save wishlist to localStorage
+function saveWishlistToLocalStorage(wishlist) {
+  localStorage.setItem('wishlist', JSON.stringify(wishlist));
+}
+
+// Function to handle click events on wishlist icons
+function addWishlistEventListeners() {
+  const wishlistIcons = document.querySelectorAll('.wishlist-icon');
+
+  wishlistIcons.forEach(icon => {
+    icon.addEventListener('click', function () {
+      const bookId = parseInt(this.getAttribute('data-id'));
+      const wishlist = getWishlistFromLocalStorage();
+
+      // Check if the book is already in the wishlist
+      if (wishlist.includes(bookId)) {
+        // Remove from wishlist
+        const newWishlist = wishlist.filter(id => id !== bookId);
+        saveWishlistToLocalStorage(newWishlist);
+        this.style.color = 'gray'; // Update icon color
+
+         // Show an alert message when removing from the wishlist
+         alert('Your cart removed from wishlist');
+      } else {
+        // Add to wishlist
+        wishlist.push(bookId);
+        saveWishlistToLocalStorage(wishlist);
+        this.style.color = 'red'; // Update icon color
+
+        alert("You want to add this product to your wishlist!"); // Show add alert
+      }
+    });
+    
   });
 }
 
