@@ -55,6 +55,7 @@ function displayProducts(products) {
 
   // Clear existing content
   booksContainer.innerHTML = '';
+  
 
   // Use map() to create a dynamic structure for each book
   products?.map(product => {
@@ -98,16 +99,6 @@ function displayProducts(products) {
 
 }
 
-// Function to get wishlist from localStorage
-function getWishlistFromLocalStorage() {
-  const wishlist = localStorage.getItem('wishlist');
-  return wishlist ? JSON.parse(wishlist) : [];
-}
-
-// Function to save wishlist to localStorage
-function saveWishlistToLocalStorage(wishlist) {
-  localStorage.setItem('wishlist', JSON.stringify(wishlist));
-}
 
 // Function to handle click events on wishlist icons
 function addWishlistEventListeners() {
@@ -116,28 +107,37 @@ function addWishlistEventListeners() {
   wishlistIcons.forEach(icon => {
     icon.addEventListener('click', function () {
       const bookId = parseInt(this.getAttribute('data-id'));
-      const wishlist = getWishlistFromLocalStorage();
+      const product = cachedData.find(item => item.id === bookId); // Find the full product by ID
+
+      let wishlist = getWishlistFromLocalStorage();
 
       // Check if the book is already in the wishlist
-      if (wishlist.includes(bookId)) {
+      if (wishlist.some(item => item.id === bookId)) {
         // Remove from wishlist
-        const newWishlist = wishlist.filter(id => id !== bookId);
-        saveWishlistToLocalStorage(newWishlist);
+        wishlist = wishlist.filter(item => item.id !== bookId);
+        saveWishlistToLocalStorage(wishlist);
         this.style.color = 'gray'; // Update icon color
-
-         // Show an alert message when removing from the wishlist
-         alert('Your cart removed from wishlist');
+        alert("Your product has been removed from the wishlist!"); // Show remove alert
       } else {
         // Add to wishlist
-        wishlist.push(bookId);
+        wishlist.push(product); // Save full product to localStorage
         saveWishlistToLocalStorage(wishlist);
         this.style.color = 'red'; // Update icon color
-
-        alert("You want to add this product to your wishlist!"); // Show add alert
+        alert("Your product has been added to the wishlist!"); // Show add alert
       }
     });
-    
   });
+}
+
+// Function to get wishlist from localStorage
+function getWishlistFromLocalStorage() {
+  const wishlist = localStorage.getItem('product');
+  return wishlist ? JSON.parse(wishlist) : [];
+}
+
+// Function to save wishlist to localStorage
+function saveWishlistToLocalStorage(wishlist) {
+  localStorage.setItem('product', JSON.stringify(wishlist));
 }
 
 // Function to filter books by title in real-time based on search input

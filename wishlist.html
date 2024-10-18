@@ -9,27 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <!-- External Css File Link Goes Here -->
      <link rel="stylesheet" href="/style/style.css">
+     <link rel="stylesheet" href="/style/wishlist.css">
     <title>Books</title>
-    <style>
-        .book-details-container{
-            min-height: 100vh;
-            margin: 0 10px;
-        }
-
-        .book-details-heading{
-            text-align: center;
-            margin: 20px;
-        }
-
-        .cart-item p{
-            margin: 10px 0;
-        }
-
-        .cart-item ul li{
-            font-size: 14px;
-        }
-
-    </style>
 </head>
 <body>
     <!-- Start Header Section -->
@@ -59,19 +40,18 @@
 
     <!-- Start Main Section -->
      <main>
-        <!-- Start Book Details Section -->
-         <section>
-            <div class="container">
-                <div class="book-details-container">
-                    <h1 class="book-details-heading">Book Details</h1>
-                    <!-- Loading Spinner ‍Start -->
-                    <div class="spinner" id="spinner">Loading..........</div>
-                    <!-- Loading Spinner ‍End -->
-                    <div id="book-details"></div>
-                </div>
+        <!-- Start Wishlist Section -->
+        <div class="container">
+            <div class="wishlist-content">
+                <h1>Your Wishlist</h1>
+                <!-- Loading Spinner -->
+                <div class="spinner" id="spinner">Loading..........</div>
+                    <div id="wishlist-container" class="wishlist-container">
+                    <!-- Wishlist products will be displayed here -->
+                    </div> 
             </div>
-         </section>
-        <!-- End Book Details Section -->
+        </div>
+        <!-- End Wishlist Section -->
      </main>
     <!-- End Main Section -->
 
@@ -84,7 +64,7 @@
 
     <!-- The Start Script File is Here -->
     <script src="/script/index.js"></script>
-    <script src="/script/book-details.js"></script>
+    <script src="/script/wishlist.js"></script>
     <!-- The End Script File is Here -->
 </body>
 </html>
