@@ -74,7 +74,6 @@ nav li:first-child{
     backdrop-filter: blur(10px);
     box-shadow: -10 0 10px rgba(0,0,0,0.1);
     display: none;
-    /* display: flex; */
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
@@ -375,7 +374,46 @@ nav li:first-child{
 
 /* Start Pagination  */
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  gap: 10px;
+  flex-wrap: wrap; 
+}
 
+/* Pagination Button Styles */
+.pagination button {
+  margin: 0 5px;
+  padding: 10px 15px; 
+  cursor: pointer;
+  border: none;
+  border-radius: 5px; 
+  background-color: #007bff; 
+  color: white; 
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s; 
+}
+
+/* Button hover effect */
+.pagination button:hover:not(:disabled) {
+  background-color: #0056b3; 
+  transform: scale(1.05); 
+}
+
+/* Active button style */
+.pagination button.active {
+  background-color: #28a745; /* Green for active button */
+  color: white;
+}
+
+/* Disabled button style */
+.pagination button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  background-color: #6c757d; /* Gray background for disabled */
+}
 
 /* End Pagination  */
   
@@ -399,25 +437,6 @@ footer p {
 
 /* End Footer */
   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* Responsive Style */
 
@@ -489,6 +508,7 @@ footer p {
     /* Start Book List */
     .books-content h1{
         font-size: 30px;
+        margin-top: 20px;
     }
 
     .books-content p{
@@ -543,6 +563,11 @@ footer p {
 
     /* End Book List */
 
+    /* ‍Start pagination */
+
+    .pagination button {
+      padding: 8px 10px; /* Smaller padding on medium screens */
+    }
 
 }
 

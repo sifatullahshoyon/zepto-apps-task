@@ -15,6 +15,9 @@ function hideSidebar(){
 
 // Cache Variable to store the fetched data
 let cachedData = null;
+let currentPage = 1; // Current page number
+const itemsPerPage = 5; // Number of items per page
+
 
 // Function to fetch data from API or return cached data
 async function fetchProductData() {
@@ -42,6 +45,7 @@ async function fetchProductData() {
     spinner.style.display = 'none';
 
     displayProducts(cachedData); // Pass data to function that dynamically creates books
+    createPagination(cachedData.length); // Create pagination controls
   } catch (error) {
     console.error("Error fetching data:", error);
     spinner.style.display = 'none';
@@ -55,10 +59,15 @@ function displayProducts(products) {
 
   // Clear existing content
   booksContainer.innerHTML = '';
+
+   // Calculate the start and end index for slicing the products array
+   const startIndex = (currentPage - 1) * itemsPerPage;
+   const endIndex = startIndex + itemsPerPage;
+   const paginatedProducts = products.slice(startIndex, endIndex);
   
 
-  // Use map() to create a dynamic structure for each book
-  products?.map(product => {
+   // Create dynamic structure for each book
+  paginatedProducts?.map(product => {
     // console.log(product);
     // Product Img:
     const imageUrl = product?.formats['image/jpeg'];
@@ -90,14 +99,55 @@ function displayProducts(products) {
     // Append the dynamically created book item to the books container
     booksContainer.appendChild(bookItem);
 
-    // Add click event listeners to the wishlist icons
-  //  addWishlistEventListeners(product);
   });
 
   //  // Add click event listeners to the wishlist icons
    addWishlistEventListeners();
 
 }
+
+
+/////////////////////////////////////////////// Start Pagination //////////////////////////////////////////
+
+// Function to create pagination controls
+function createPagination(totalItems) {
+  const paginationContainer = document.getElementById('pagination');
+  paginationContainer.innerHTML = ''; // Clear existing pagination
+
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+  // Create Previous button
+  const prevButton = document.createElement('button');
+  prevButton.textContent = 'Previous';
+  prevButton.disabled = currentPage === 1; // Disable if on first page
+  prevButton.onclick = () => changePage(currentPage - 1);
+  paginationContainer.appendChild(prevButton);
+
+  // Create page number buttons
+  for (let i = 1; i <= totalPages; i++) {
+    const pageButton = document.createElement('button');
+    pageButton.textContent = i;
+    pageButton.classList.toggle('active', i === currentPage); // Highlight active page
+    pageButton.onclick = () => changePage(i);
+    paginationContainer.appendChild(pageButton);
+  }
+
+  // Create Next button
+  const nextButton = document.createElement('button');
+  nextButton.textContent = 'Next';
+  nextButton.disabled = currentPage === totalPages; // Disable if on last page
+  nextButton.onclick = () => changePage(currentPage + 1);
+  paginationContainer.appendChild(nextButton);
+}
+
+// Function to change the current page
+function changePage(page) {
+  currentPage = page;
+  displayProducts(cachedData); // Re-display products for the current page
+  createPagination(cachedData.length); // Update pagination controls
+}
+
+/////////////////////////////////////////////// End Pagination //////////////////////////////////////////
 
 
 // Function to handle click events on wishlist icons
