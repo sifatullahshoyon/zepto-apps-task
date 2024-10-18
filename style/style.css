@@ -26,6 +26,10 @@ body {
 
 nav{
     background-color: var(--primary-color);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
 }
 
 nav ul{
@@ -371,37 +375,29 @@ nav li:first-child{
 
 /* Start Pagination  */
 
-.pagination-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .pagination-btn {
-    margin: 5px;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .pagination-btn:hover {
-    background-color: #0056b3;
-  }
-  
-  .pagination-btn.active {
-    background-color: #0056b3;
-    font-weight: bold;
-  }
+
 
 /* End Pagination  */
   
-
 /* End Books Cart */
 
-
 /* End  Book */
+
+/* Start Footer */
+
+footer{
+  background-color: var(--primary-color);
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer p {
+  color: white;
+}
+
+/* End Footer */
   
 
 
