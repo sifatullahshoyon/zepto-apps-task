@@ -18,5 +18,5 @@ Check out the live version of the application [here](https://chipper-rugelach-17
 ## Installation
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/books-app.git
+   git clone https://github.com/sifatullahshoyon/zepto-apps-task.git
 
